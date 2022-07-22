@@ -92,10 +92,11 @@ def _main(os_version: str, device_type: str, name: Optional[str]) -> None:
             _boot_simulator(simulator_id)
     else:
         simulator_id = _simctl(
-            ["create", device_name, device_type, runtime_identifier]
+            ["clone", device_type, _device_name(device_type, os_version)]
         ).strip()
         _boot_simulator(simulator_id)
 
+    print(_device_name(device_type, os_version))
     print(simulator_id.strip())
 
 
